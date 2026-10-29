@@ -87,8 +87,9 @@ class SerialClientTests(unittest.TestCase):
             dispatch.assert_not_called()
 
     def test_cli_preserves_explicit_confirmation(self):
-        arguments = ("ir_terminal.py", "--port", "COM7", "save", "fan_low",
-                     "--confirmed", "--overwrite")
+        # sys.argv is a list; Python 3.10 argparse mutates argument slices.
+        arguments = ["ir_terminal.py", "--port", "COM7", "save", "fan_low",
+                     "--confirmed", "--overwrite"]
         with patch.object(sys, "argv", arguments), \
                 patch.object(ir_terminal, "invoke", return_value="saved\n") as dispatch, \
                 contextlib.redirect_stdout(io.StringIO()) as output:

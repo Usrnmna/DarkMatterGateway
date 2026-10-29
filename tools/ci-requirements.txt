@@ -1,0 +1,4 @@
+# Repository validation only; runtime serial-client requirements stay separate.
+PyYAML==6.0.3
+jsonschema==4.26.0
+markdown-it-py==4.0.0

@@ -39,6 +39,7 @@ The [project overview](../README.md) describes intended use, capabilities, compa
 | [Tests](../tests/) | Portable waveform, direct IR service/storage, Matter/startup, console, serial-client, configuration, and hardware-data checks |
 | [Development conventions](../CONTRIBUTING.md) | Source maintainability, documentation style, verification, and repository preparation |
 | [Delivery requirements and decisions](delivery-requirements.md) | M1 classification, M2 scope and acceptance criteria, deferred M3, and unresolved future capabilities |
-| [Host-check workflow](../.github/workflows/host-checks.yml) | GitHub Actions definition for portable checks |
+| [CI and failure diagnosis](ci.md) | Job coverage, local reproduction, diagnostic artifacts, required checks, and verification limits |
+| [Host-check workflow](../.github/workflows/host-checks.yml) | GitHub Actions definition for host, target-build, and regression-sensitivity checks |
 
 Hardware schedules specify the proposed circuit; they are not a captured CAD schematic or a fabrication release. Validation claims are limited to the conditions and dates recorded in the validation report.

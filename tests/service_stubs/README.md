@@ -11,8 +11,8 @@ bash tools/test-host.sh
 Each service binary also accepts one named group, for example:
 
 ```bash
-./build/test_ir_service teardown_fault_latching
-./build/test_ir_storage commit_failure_is_visible
+./build/ci/host/binaries/ir_service/test teardown_fault_latching
+./build/ci/host/binaries/ir_storage/test commit_failure_is_visible
 ```
 
 ## Controlled behavior

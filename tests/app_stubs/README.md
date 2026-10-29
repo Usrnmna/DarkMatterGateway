@@ -11,8 +11,8 @@ bash tools/test-host.sh
 The new binaries accept one named group for focused reproduction:
 
 ```bash
-./build/test_matter_app queue_rejection_preserves_state_and_retry
-./build/test_startup startup_stops_on_initialization_failure
+./build/ci/host/binaries/matter_app/test queue_rejection_preserves_state_and_retry
+./build/ci/host/binaries/startup/test startup_stops_on_initialization_failure
 ```
 
 ## Controlled dependencies

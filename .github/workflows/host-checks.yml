@@ -2,27 +2,253 @@ name: Host checks
 on:
   push:
   pull_request:
+  schedule:
+    - cron: '23 11 * * 1'
   workflow_dispatch:
+    inputs:
+      suite:
+        description: Full verification or a focused diagnostic run
+        type: choice
+        options: [full, python, cpp, ir, proflame2, app, console, firmware, mutations]
+        default: full
+      compiler:
+        description: Both compilers are required for full verification
+        type: choice
+        options: [both, gcc, clang]
+        default: both
+      cold_cache:
+        description: Skip SDK dependency cache restoration
+        type: boolean
+        default: false
+      verbose:
+        description: Enable verbose firmware compilation
+        type: boolean
+        default: false
 
 permissions:
   contents: read
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.event_name }}-${{ github.ref }}
+  group: ${{ github.workflow }}-${{ github.event_name }}-${{ github.ref }}-${{ inputs.suite || 'full' }}-${{ inputs.compiler || 'both' }}
   cancel-in-progress: true
 
+defaults:
+  run:
+    shell: bash
+
+env:
+  PYTHONUNBUFFERED: '1'
+
 jobs:
-  portable-core-and-configuration:
+  change-scope:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    outputs:
+      plan: ${{ steps.scope.outputs.plan }}
+      python: ${{ steps.scope.outputs.python }}
+      cpp: ${{ steps.scope.outputs.cpp }}
+      firmware: ${{ steps.scope.outputs.firmware }}
+      mutations: ${{ steps.scope.outputs.mutations }}
+      compilers: ${{ steps.scope.outputs.compilers }}
+      cold_cache: ${{ steps.scope.outputs.cold_cache }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - id: scope
+        run: python3 tools/ci_scope.py plan
+
+  repository-checks:
     runs-on: ubuntu-24.04
     timeout-minutes: 10
     steps:
-      - name: Check out source
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
-      - name: Set up Python
-        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
         with:
           python-version: '3.12'
-      - name: Run portable tests
-        run: bash tools/test-host.sh
+      - name: Install validation dependencies
+        run: |
+          python -m pip install -r tools/ci-requirements.txt
+          mkdir -p build/ci-tools
+          curl --fail --location --retry 2 https://github.com/rhysd/actionlint/releases/download/v1.7.12/actionlint_1.7.12_linux_amd64.tar.gz -o build/ci-tools/actionlint.tar.gz
+          echo '8aca8db96f1b94770f1b0d72b6dddcb1ebb8123cb3712530b08cc387b349a3d8  build/ci-tools/actionlint.tar.gz' | sha256sum --check
+          tar -xzf build/ci-tools/actionlint.tar.gz -C build/ci-tools actionlint
+      - name: Validate published repository
+        run: python tools/ci_report.py --name repository --output build/ci/repository -- python tools/check_repository.py --actionlint build/ci-tools/actionlint
+      - name: Retain diagnostics
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: repository-${{ github.run_attempt }}
+          path: build/ci/repository/
+          retention-days: 14
+
+  python-tools:
+    needs: change-scope
+    if: needs.change-scope.outputs.python == 'true'
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {os: ubuntu-24.04, python: '3.10'}
+          - {os: ubuntu-24.04, python: '3.12'}
+          - {os: ubuntu-24.04, python: '3.13'}
+          - {os: windows-2022, python: '3.12'}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python -m pip install -r tools/requirements.txt
+      - name: Test Python tooling and serial-client imports
+        run: python tools/test_host.py --phase python --serial-smoke --output build/ci/python
+      - name: Retain diagnostics
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: python-${{ matrix.os }}-${{ matrix.python }}-${{ github.run_attempt }}
+          path: build/ci/python/
+          retention-days: 14
+
+  cpp-sanitizers:
+    needs: change-scope
+    if: needs.change-scope.outputs.cpp == 'true'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        compiler: ${{ fromJSON(needs.change-scope.outputs.compilers) }}
+    env:
+      CXX: ${{ matrix.compiler == 'clang++' && 'clang++-18' || 'g++' }}
+      CI_SUITE: ${{ inputs.suite || 'full' }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.12'
+      - name: Install Clang sanitizer runtime
+        if: matrix.compiler == 'clang++'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y clang-18 libclang-rt-18-dev
+      - name: Compile and exercise host suites
+        run: |
+          case "$CI_SUITE" in
+            full|cpp) CI_SUITE=all ;;
+          esac
+          bash tools/test-host.sh --phase cpp --suite "$CI_SUITE" --output build/ci/cpp
+      - name: Retain diagnostics and test binaries
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: cpp-${{ matrix.compiler }}-${{ github.run_attempt }}
+          path: build/ci/cpp/
+          retention-days: 14
+
+  firmware-build:
+    needs: change-scope
+    if: needs.change-scope.outputs.firmware == 'true'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    env:
+      IR_BUILD_JOBS: '4'
+      CI_VERBOSE: ${{ inputs.verbose && 'true' || 'false' }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.12'
+      - name: Restore SDK downloads and toolchains
+        id: sdk-cache
+        if: needs.change-scope.outputs.cold_cache != 'true'
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          key: sdk-downloads-${{ runner.os }}-${{ runner.arch }}-py312-${{ hashFiles('tools/bootstrap-sdk.sh', 'tools/activate-sdk.sh', 'firmware/dependencies.lock') }}
+          path: |
+            .cache/idf-tools/dist
+            .cache/idf-tools/tools
+            .cache/pip
+            .cache/component-cache
+            .cache/gn
+      - name: Prepare pinned SDKs
+        run: python tools/ci_report.py --name bootstrap --timeout 1500 --output build/ci/bootstrap -- bash tools/bootstrap-sdk.sh
+      - name: Build and inspect ESP32-S3 firmware
+        run: |
+          source tools/activate-sdk.sh
+          python tools/ci_firmware.py
+      - name: Save trusted dependency cache
+        if: success() && github.event_name == 'push' && github.ref == format('refs/heads/{0}', github.event.repository.default_branch) && needs.change-scope.outputs.cold_cache != 'true' && steps.sdk-cache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          key: ${{ steps.sdk-cache.outputs.cache-primary-key }}
+          path: |
+            .cache/idf-tools/dist
+            .cache/idf-tools/tools
+            .cache/pip
+            .cache/component-cache
+            .cache/gn
+      - name: Retain firmware diagnostics
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: firmware-${{ github.run_attempt }}
+          path: |
+            build/ci/bootstrap/
+            build/ci/firmware/
+          retention-days: 14
+
+  regression-sensitivity:
+    needs: change-scope
+    if: needs.change-scope.outputs.mutations == 'true'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        suite: [service, app]
+    env:
+      MUTATION_SUITE: ${{ matrix.suite }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.12'
+      - name: Verify regression sensitivity
+        run: python tools/ci_report.py --name "mutations-$MUTATION_SUITE" --timeout 1080 --output build/ci/mutations -- python "tools/test-$MUTATION_SUITE-mutations.py"
+      - name: Retain mutation evidence
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: mutations-${{ matrix.suite }}-${{ github.run_attempt }}
+          path: build/ci/mutations/
+          retention-days: 14
+
+  portable-core-and-configuration:
+    name: ${{ github.event_name == 'workflow_dispatch' && (inputs.suite != 'full' || inputs.compiler != 'both') && 'Diagnostic summary' || 'portable-core-and-configuration' }}
+    needs: [change-scope, repository-checks, python-tools, cpp-sanitizers, firmware-build, regression-sensitivity]
+    if: always()
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Enforce all selected results
+        env:
+          CI_NEEDS: ${{ toJSON(needs) }}
+          CI_DIAGNOSTIC: ${{ github.event_name == 'workflow_dispatch' && (inputs.suite != 'full' || inputs.compiler != 'both') && 'true' || 'false' }}
+        run: python3 tools/ci_scope.py gate

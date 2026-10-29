@@ -98,4 +98,4 @@ python tools/profile_config.py config/devices.json
 
 ## GitHub connection
 
-Repository setup, excluded files, licensing status, and hosted-check requirements are described in [repository preparation](../CONTRIBUTING.md#repository-preparation).
+Repository setup, excluded files, and licensing status are described in [repository preparation](../CONTRIBUTING.md#repository-preparation). Hosted checks, local job reproduction, and diagnostic artifacts are described in the [CI and failure-diagnosis guide](ci.md).

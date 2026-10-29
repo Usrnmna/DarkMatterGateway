@@ -284,7 +284,7 @@ Once that product/API contract is approved and G4/G5 pass, add a separate adapte
 
 ## Verification and handoff
 
-During later implementation, the owning task registers each new C++ test in `tools/test-host.sh`; `bash tools/test-host.sh` remains the full host-check entry point. Keep its existing C++17 warnings and sanitizers. Python discovery remains `python3 -m unittest discover -s tests -p 'test_*.py' -v`.
+During later implementation, the owning task registers each new C++ test in `tools/test_host.py`; `bash tools/test-host.sh` remains the full host-check entry point. Keep its existing C++17 warnings and sanitizers. Python discovery remains `python3 -m unittest discover -s tests -p 'test_*.py' -v`.
 
 In an activated pinned ESP-IDF/ESP-Matter environment, use distinct build directories under `firmware/`: `idf.py -B build-x0a-disabled build` for the default and `idf.py -B build-x0a-enabled -DPROFLAME2_CONFIG=/absolute/path/to/config/proflame2.local.json build` for an appropriately populated local configuration. These are future compilation commands only; no flashing command is part of this plan.
 
