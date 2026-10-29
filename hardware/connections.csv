@@ -1,0 +1,129 @@
+section,reference,terminal,net_or_connection,notes
+power,J1,A4 A9 B4 B9,VBUS_RAW,All VBUS contacts joined
+power,J1,A1 A12 B1 B12 shell,GND,All grounds and shell tabs joined
+power,F1,1,VBUS_RAW,Series resettable fuse
+power,F1,2,VBUS_FUSED,All board supply branches originate here
+power,U2,1 IN,VBUS_FUSED,TLV75533PDBVR
+power,U2,2 GND,GND,
+power,U2,3 EN,VBUS_FUSED,
+power,U2,4 NC,NC,
+power,U2,5 OUT,3V3_AON,
+power,C1,1/2,VBUS_FUSED/GND,1uF
+power,C2,1/2,3V3_AON/GND,1uF
+usb,U3,1 CC1,J1 A5,Do not add Rd resistors
+usb,U3,2 CC2,J1 B5,Do not join CC1 and CC2
+usb,U3,3 PORT,GND,UFP sink mode
+usb,U3,4 VBUS_DET,R1 to VBUS_FUSED,887k1percent
+usb,U3,5 ADDR,NC,GPIO mode requires floating
+usb,U3,6 OUT3,NC,
+usb,U3,7 OUT1,CC_HIGH_CURRENT_N,R2 10k to3V3_AON and U4 pin2
+usb,U3,8 OUT2,NC,
+usb,U3,9 ID,NC,
+usb,U3,10 GND,GND,
+usb,U3,11 EN_N,GND,
+usb,U3,12 VDD,3V3_AON,
+usb,C3,1/2,3V3_AON/GND,100nF at U3
+power,U4,1 NC,NC,SN74LVC1G14DBVR
+power,U4,2 A,CC_HIGH_CURRENT_N,
+power,U4,3 GND,GND,
+power,U4,4 Y,MAIN_ON,R3 10k toGND
+power,U4,5 VCC,3V3_AON,
+power,C4,1/2,3V3_AON/GND,100nF at U4
+power,U5,1 IN,VBUS_FUSED,TPS2553DBVR constant-current version
+power,U5,2 GND,GND,
+power,U5,3 EN,MAIN_ON,
+power,U5,4 FAULT,MAIN_FAULT_N,R43 100k to3V3_AON; test point only
+power,U5,5 ILIM,R6 toGND,21.5k1percent; current limit1.106-1.297A
+power,U5,6 OUT,+5V_MAIN,
+power,R42,1/2,+5V_MAIN/GND,1k0.1W bleed resistor
+power,C5,1/2,VBUS_FUSED/GND,1uF atU5 input
+power,C7,positive/negative,+5V_MAIN/GND,220uF10V
+power,U6,1 FB,3V3_MAIN,AP63203 fixed output direct sense
+power,U6,2 EN,+5V_MAIN,
+power,U6,3 VIN,+5V_MAIN,
+power,U6,4 GND,GND,
+power,U6,5 SW,BUCK_SW,L1 terminal1
+power,U6,6 BST,BUCK_BST,C10 terminal1
+power,C8 C9,1/2,+5V_MAIN/GND,10uF and100nF atU6
+power,C10,1/2,BUCK_BST/BUCK_SW,100nF25V
+power,L1,1/2,BUCK_SW/3V3_MAIN,4.7uH shielded
+power,C11 C12,1/2,3V3_MAIN/GND,22uF each
+mcu,U1,1 40 41,GND,Module ground pads including EPAD
+mcu,U1,2 3V3,3V3_MAIN,
+mcu,C13 C14,1/2,3V3_MAIN/GND,10uF and100nF atU1
+mcu,U1,3 EN,MCU_EN,R7 10k to3V3_MAIN C15 1uF toGND SW1 toGND
+mcu,U1,27 GPIO0,BOOT_N,R8 10k to3V3_MAIN SW2 toGND
+mcu,U1,22 GPIO14,COMMISSION_N,R9 10k to3V3_MAIN C16 100nF toGND SW3 toGND
+mcu,U1,23 GPIO21,R10 toD7 anode,1k D7 cathodeGND
+usb,J1,A6 B6,USB_DP_CONNECTOR,D8 pin1 thenR13 22ohm toU1 pin14 GPIO20
+usb,J1,A7 B7,USB_DM_CONNECTOR,D9 pin1 thenR12 22ohm toU1 pin13 GPIO19
+usb,J1,A5 CC1,D10 pin1 andU3 pin1,
+usb,J1,B5 CC2,D11 pin1 andU3 pin2,
+usb,D8 D9 D10 D11,2,GND,TPD1E05U06DPYR
+usb,J1,A8 B8,NC,SBU unused
+rx,U7,3 VS,R14 to3V3_MAIN,100ohm supply filter
+rx,U7,2 GND,GND,
+rx,U7,1 OUT,R17 toU1 pin12 GPIO8,100ohm signal series
+rx,C17 C18,1/2,U7 VS/GND,4.7uF and100nF
+rx,U8,3 VS,R15 to3V3_MAIN,100ohm supply filter
+rx,U8,2 GND,GND,
+rx,U8,1 OUT,R18 toU1 pin17 GPIO9,100ohm signal series
+rx,C19 C20,1/2,U8 VS/GND,4.7uF and100nF
+rx,U9,3 VS,R16 to3V3_MAIN,100ohm supply filter
+rx,U9,2 GND,GND,
+rx,U9,1 OUT,R19 toU1 pin18 GPIO10,100ohm signal series
+rx,R20,1/2,U9 VS/U9 OUT,4.7k external pullup
+rx,C22 C23,1/2,U9 VS/GND,4.7uF and100nF
+tx,U10,14 VCC,3V3_MAIN,SN74LVC125APWR
+tx,U10,7 GND,GND,
+tx,U10,1 4 10 OE_N,TX_OE_N,U1 pin11 GPIO18 andR11 10k to3V3_MAIN
+tx,U10,2 1A,U1 pin4 GPIO4,R27 10k pulldown toGND
+tx,U10,5 2A,U1 pin5 GPIO5,R40 10k pulldown toGND
+tx,U10,9 3A,U1 pin6 GPIO6,R41 10k pulldown toGND
+tx,U10,3 1Y,R21 toQ1 gate,220ohm
+tx,U10,6 2Y,R22 toQ2 gate,220ohm
+tx,U10,8 3Y,R23 toQ3 gate,220ohm
+tx,U10,13 4OE_N,3V3_MAIN,Unused channel disabled
+tx,U10,12 4A,GND,Unused input defined
+tx,U10,11 4Y,NC,
+tx,C21,1/2,3V3_MAIN/GND,100nF atU10
+tx,Q1 Q2 Q3,2 source,GND,AO3400A
+tx,Q1,1 gate,R24 toGND,10k gate pulldown
+tx,Q2,1 gate,R25 toGND,10k gate pulldown
+tx,Q3,1 gate,R26 toGND,10k gate pulldown
+tx,Q1,3 drain,D1 D2 D3 D4 cathodes,Common array return
+tx,D1,anode,R34 to+5V_MAIN,68ohm1W
+tx,D2,anode,R35 to+5V_MAIN,68ohm1W
+tx,D3,anode,R36 to+5V_MAIN,68ohm1W
+tx,D4,anode,R37 to+5V_MAIN,68ohm1W
+tx,C24,1/2,+5V_MAIN/GND,10uF near array supply
+ports,J2,1 EXT1_ANODE,R38 to+5V_MAIN,220ohm0.5W
+ports,J2,2 EXT1_RETURN,Q2 pin3 drain,Not ground
+ports,J3,1 EXT2_ANODE,R39 to+5V_MAIN,220ohm0.5W
+ports,J3,2 EXT2_RETURN,Q3 pin3 drain,Not ground
+ports,D12,anode/cathode,J2 pin2/+5V_MAIN,SS14 positive drain clamp
+ports,D13,anode/cathode,J3 pin2/+5V_MAIN,SS14 positive drain clamp
+ports,D14,cathode/anode,J2 pin1/GND,SMAJ6.0A
+ports,D15,cathode/anode,J2 pin2/GND,SMAJ6.0A
+ports,D16,cathode/anode,J3 pin1/GND,SMAJ6.0A
+ports,D17,cathode/anode,J3 pin2/GND,SMAJ6.0A
+harness,D5,anode/cathode,H1 pin1/H1 pin2,TSAL6200 emitter1
+harness,D18,cathode/anode,D5 anode/D5 cathode,Antiparallel1N4148
+harness,D6,anode/cathode,H2 pin1/H2 pin2,TSAL6200 emitter2
+harness,D19,cathode/anode,D6 anode/D6 cathode,Antiparallel1N4148
+service,J4,1,GND,No supply output
+service,J4,2,R32 toU1 pin37 GPIO43,1k boardTX toadapterRX
+service,J4,3,R33 toU1 pin36 GPIO44,1k boardRX fromadapterTX
+service,J4,4,MCU_EN,Open-drain control only if used
+expansion,J5,1,GND,
+expansion,J5,2,3V3_MAIN,Provisional50mA limit
+expansion,J5,3,U1 pin7 GPIO7,Optional receiver input
+expansion,J5,4,U1 pin19 GPIO11,Optional SDA
+expansion,J5,5,U1 pin20 GPIO12,Optional SCL
+expansion,J5,6,U1 pin21 GPIO13,Reserved
+optional,R28,1/2,3V3_MAIN/J5 pin4,4.7k DNP
+optional,R29,1/2,3V3_MAIN/J5 pin5,4.7k DNP
+optional,R30,1/2,+5V_MAIN/MAIN_5V_SENSE,100k DNP
+optional,R31,1/2,MAIN_5V_SENSE/GND,100k DNP
+optional,C25,1/2,MAIN_5V_SENSE/GND,10nF DNP
+optional,U1,39 GPIO1,MAIN_5V_SENSE,Optional ADC measurement

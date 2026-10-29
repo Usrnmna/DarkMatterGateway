@@ -1,0 +1,428 @@
+[
+  {
+    "file": "sit-system-9955116-02.pdf",
+    "url": "https://www.sitgroup.it/wp-content/uploads/2021/03/584-IFC-9955116_02_Proflame_2_Basic_Standard_Complete_03-03-2016.locked.pdf",
+    "resolved_url": "https://www.sitgroup.it/wp-content/uploads/2021/03/584-IFC-9955116_02_Proflame_2_Basic_Standard_Complete_03-03-2016.locked.pdf",
+    "content_type": "application/pdf",
+    "status": "downloaded",
+    "bytes": 3007945,
+    "sha256": "35eee52239f4706a0bf63dca0f96d451df43c59aa704393edb63719cda91f93e",
+    "retrieved_utc": "2026-10-29T02:19:15.734685+00:00",
+    "access_date_pacific": "2026-10-28",
+    "pdf_pages": 24,
+    "pdf_metadata": {
+      "/CreationDate": "D:20160314153735+01'00'",
+      "/Author": "BusRob",
+      "/Creator": "PScript5.dll Version 5.2.2",
+      "/Producer": "Acrobat Distiller 7.0.5 (Windows)",
+      "/ModDate": "D:20160314154043+01'00'",
+      "/Title": "9955116_A02_Proflame_2_Basic_Standard_Complete_03-03-2016.indd"
+    }
+  },
+  {
+    "file": "sit-ifc-2015.pdf",
+    "url": "https://proflame.sitgroup.it/media/99/t-file/Proflame_IFC-control-board-Use_and_Installation_Instructions.pdf",
+    "status": "unavailable",
+    "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1010)>",
+    "access_date_pacific": "2026-10-28"
+  },
+  {
+    "file": "sit-transmitter-ce-9957120-00.pdf",
+    "url": "https://www.sitgroup.it/wp-content/uploads/2021/04/584-Remote-Control-for-IFC-EU-99570120_00.pdf",
+    "resolved_url": "https://www.sitgroup.it/wp-content/uploads/2021/04/584-Remote-Control-for-IFC-EU-99570120_00.pdf",
+    "content_type": "application/pdf",
+    "status": "downloaded",
+    "bytes": 663647,
+    "sha256": "00af9bc562d7148e2984dd9f6b8fe03c528fd80a4344be1bf160699f5403420e",
+    "retrieved_utc": "2026-10-29T02:19:14.893608+00:00",
+    "access_date_pacific": "2026-10-28",
+    "pdf_pages": 12,
+    "pdf_metadata": {
+      "/CreationDate": "D:20121212105308+01'00'",
+      "/Author": "BusRob",
+      "/Creator": "PScript5.dll Version 5.2.2",
+      "/Producer": "Acrobat Distiller 7.0.5 (Windows)",
+      "/ModDate": "D:20121212105629+01'00'",
+      "/Title": "99570120_00_nero_mod_121212.indd"
+    }
+  },
+  {
+    "file": "sit-wall-transmitter.pdf",
+    "url": "https://www.sitgroup.it/wp-content/uploads/2021/07/Proflame_Wall_Mount_Transmitter-Catalogue.pdf",
+    "resolved_url": "https://www.sitgroup.it/wp-content/uploads/2021/07/Proflame_Wall_Mount_Transmitter-Catalogue.pdf",
+    "content_type": "application/pdf",
+    "status": "downloaded",
+    "bytes": 2648193,
+    "sha256": "25905a5c7bc5026afe2fe914049169b614a0e44a5fa26c6864531fc61b448210",
+    "retrieved_utc": "2026-10-29T02:19:15.667944+00:00",
+    "access_date_pacific": "2026-10-28",
+    "pdf_pages": 12,
+    "pdf_metadata": {
+      "/CreationDate": "D:20140224154146+01'00'",
+      "/Creator": "Adobe InDesign CS2 (4.0.5)",
+      "/ModDate": "D:20210512164805+02'00'",
+      "/Producer": "Adobe PDF Library 7.0",
+      "/Trapped": "/False"
+    }
+  },
+  {
+    "file": "sit-wifi-dongle.pdf",
+    "url": "https://proflame.sitgroup.it/media/96/t-file/Proflame-WIFI-Dongle-Use-and-Installation-Instructions.pdf",
+    "status": "unavailable",
+    "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1010)>",
+    "access_date_pacific": "2026-10-28"
+  },
+  {
+    "file": "montigo-wifi-xg0681.pdf",
+    "url": "https://www.empireinsider.com/wp-content/uploads/2024/06/xg0681-montigo-manual-sit-wifi-full.pdf",
+    "resolved_url": "https://www.empireinsider.com/wp-content/uploads/2024/06/xg0681-montigo-manual-sit-wifi-full.pdf",
+    "content_type": "application/pdf",
+    "status": "downloaded",
+    "bytes": 554309,
+    "sha256": "4f7ca4638001c080f99c28bbfe711e7243c110e184c11ac60e864eb6c8a19d79",
+    "retrieved_utc": "2026-10-29T02:19:14.571158+00:00",
+    "access_date_pacific": "2026-10-28",
+    "pdf_pages": 8,
+    "pdf_metadata": {
+      "/CreationDate": "D:20230615112652-07'00'",
+      "/Creator": "Adobe InDesign 18.3 (Windows)",
+      "/ModDate": "D:20230615112655-07'00'",
+      "/Producer": "Adobe PDF Library 17.0",
+      "/Trapped": "/False"
+    }
+  },
+  {
+    "file": "fcc-wall-test-2178867.pdf",
+    "url": "https://fcc.report/FCC-ID/T99058404300/2178867.pdf",
+    "status": "unavailable",
+    "error": "HTTP Error 403: Forbidden",
+    "access_date_pacific": "2026-10-28"
+  },
+  {
+    "file": "fcc-wall-label-2178866.pdf",
+    "url": "https://fcc.report/FCC-ID/T99058404300/2178866.pdf",
+    "status": "unavailable",
+    "error": "HTTP Error 403: Forbidden",
+    "access_date_pacific": "2026-10-28"
+  },
+  {
+    "file": "fcc-wall-internal-2178864.pdf",
+    "url": "https://fcc.report/FCC-ID/T99058404300/2178864.pdf",
+    "status": "unavailable",
+    "error": "HTTP Error 403: Forbidden",
+    "access_date_pacific": "2026-10-28"
+  },
+  {
+    "file": "fcc-gt-test-673118.pdf",
+    "url": "https://fcc.report/FCC-ID/T99058402300/673118.pdf",
+    "status": "unavailable",
+    "error": "HTTP Error 403: Forbidden",
+    "access_date_pacific": "2026-10-28"
+  },
+  {
+    "file": "smartfire-aa669ae.tar.gz",
+    "url": "https://codeload.github.com/johnellinwood/smartfire/tar.gz/aa669ae633c2f1e567bd9db94683119f599e081a",
+    "download_method": "curl-system-trust",
+    "status": "unavailable",
+    "error": "Command '['curl.exe', '--fail', '--location', '--silent', '--show-error', '--max-time', '45', 'https://codeload.github.com/johnellinwood/smartfire/tar.gz/aa669ae633c2f1e567bd9db94683119f599e081a']' returned non-zero exit status 35.",
+    "access_date_pacific": "2026-10-28"
+  },
+  {
+    "file": "proflame-ac49e3b.tar.gz",
+    "url": "https://codeload.github.com/Aetf/proflame/tar.gz/ac49e3b709de2f17895c3d7f626ff04f6198198b",
+    "download_method": "curl-system-trust",
+    "status": "unavailable",
+    "error": "Command '['curl.exe', '--fail', '--location', '--silent', '--show-error', '--max-time', '45', 'https://codeload.github.com/Aetf/proflame/tar.gz/ac49e3b709de2f17895c3d7f626ff04f6198198b']' returned non-zero exit status 35.",
+    "access_date_pacific": "2026-10-28"
+  },
+  {
+    "file": "sit-ifc-ffrt10-2018.pdf",
+    "url": "https://www.sitgroup.it/wp-content/uploads/2021/04/584-IFC-FFRT-10-Use-and-installation-instructions.pdf",
+    "resolved_url": "https://www.sitgroup.it/wp-content/uploads/2021/04/584-IFC-FFRT-10-Use-and-installation-instructions.pdf",
+    "content_type": "application/pdf",
+    "status": "downloaded",
+    "bytes": 1512961,
+    "sha256": "1523069191969338b0801b82393dee2cb001310c9050a0774424c54f33264f14",
+    "retrieved_utc": "2026-10-29T02:21:02.551756+00:00",
+    "access_date_pacific": "2026-10-28",
+    "pdf_pages": 14,
+    "pdf_metadata": {
+      "/Author": "Bruno Barbolini",
+      "/Creator": "Microsoft\u00ae Word 2010",
+      "/CreationDate": "D:20181016102912+02'00'",
+      "/ModDate": "D:20181016102912+02'00'",
+      "/Producer": "Microsoft\u00ae Word 2010"
+    }
+  },
+  {
+    "file": "ti-cc1101.pdf",
+    "url": "https://www.ti.com/lit/ds/symlink/cc1101.pdf",
+    "resolved_url": "https://www.ti.com/lit/ds/symlink/cc1101.pdf",
+    "content_type": "application/pdf",
+    "status": "downloaded",
+    "bytes": 2758709,
+    "sha256": "daa14cd9b83adf92545ab072939f85f6a8fef9ce654e3f37366087db714ea639",
+    "retrieved_utc": "2026-10-29T02:21:00.776287+00:00",
+    "access_date_pacific": "2026-10-28",
+    "pdf_pages": 112,
+    "pdf_metadata": {
+      "/Creator": "Microsoft\u00ae Word 2010",
+      "/Producer": "iText 2.1.7 by 1T3XT",
+      "/Title": "CC1101 Low-Power Sub-1 GHz RF Transceiver datasheet (Rev. I)",
+      "/Keywords": "SWRS061I,SWRS061",
+      "/Subject": "Data Sheet",
+      "/ModDate": "D:20260905014318-05'00'",
+      "/Author": "Texas Instruments, Incorporated [SWRS061,I\n]",
+      "/CreationDate": "D:20260905014318-05'00'"
+    }
+  },
+  {
+    "file": "esphome-proflame2-bb67453.tar.gz",
+    "url": "https://codeload.github.com/kaechele/esphome-proflame2/tar.gz/bb67453c8782385e2b895274d482e60eb4808934",
+    "download_method": "curl-system-trust",
+    "status": "unavailable",
+    "error": "Command '['curl.exe', '--fail', '--location', '--silent', '--show-error', '--max-time', '45', 'https://codeload.github.com/kaechele/esphome-proflame2/tar.gz/bb67453c8782385e2b895274d482e60eb4808934']' returned non-zero exit status 35.",
+    "access_date_pacific": "2026-10-28"
+  },
+  {
+    "file": "sit-fcc-gt-grant.pdf",
+    "url": "https://apps01.sitgroup.it/tds/certif.nsf/referenceID/26A8572A3CB223E4C12574B000311F3C/%24file/GrantT99058402300.pdf",
+    "status": "unavailable",
+    "error": "<urlopen error [Errno 11001] getaddrinfo failed>",
+    "access_date_pacific": "2026-10-28"
+  },
+  {
+    "file": "marquis-proflame2.pdf",
+    "url": "https://urbanfp.ca/wp-content/uploads/2016/05/Marquis-ProFlame2-Manual.pdf",
+    "resolved_url": "https://urbanfp.ca/wp-content/uploads/2016/05/Marquis-ProFlame2-Manual.pdf",
+    "content_type": "application/pdf",
+    "status": "downloaded",
+    "bytes": 610101,
+    "sha256": "01a363c8b40be1a2940b6d19c76407d1410565e450b75c801b5c127facb2946d",
+    "retrieved_utc": "2026-10-29T02:24:31.834937+00:00",
+    "access_date_pacific": "2026-10-28",
+    "pdf_pages": 7,
+    "pdf_metadata": {
+      "/Author": "Kingsman Industries",
+      "/CreationDate": "D:20161023105158-05'00'",
+      "/Creator": "Microsoft\u00ae Word 2013",
+      "/ModDate": "D:20171013084927-05'00'",
+      "/Producer": "Microsoft\u00ae Word 2013",
+      "/Title": " "
+    }
+  },
+  {
+    "file": "community/aetf/protocol.py",
+    "url": "https://github.com/Aetf/proflame/blob/ac49e3b709de2f17895c3d7f626ff04f6198198b/src/proflame/protocol.py",
+    "git_blob_sha": "48ebd56f463ff4d4e99d93aefb65095ff9cfcc0b",
+    "status": "retrieved-via-github",
+    "access_date_pacific": "2026-10-28",
+    "note": "UTF-8 content snapshot from GitHub connector; final newline normalized.",
+    "bytes": 9599,
+    "sha256": "03497ecbbfa05fe7fa6c7e48ff02d4208df89f085b4cdd7a5c4e43e714314675"
+  },
+  {
+    "file": "community/aetf/cmd.csv",
+    "url": "https://github.com/Aetf/proflame/blob/ac49e3b709de2f17895c3d7f626ff04f6198198b/tests/cmd.csv",
+    "git_blob_sha": "06e99ff9088723e1b5678a099f84d2a440c2cd3c",
+    "status": "retrieved-via-github",
+    "access_date_pacific": "2026-10-28",
+    "note": "UTF-8 content snapshot from GitHub connector; final newline normalized.",
+    "bytes": 4674,
+    "sha256": "f844086090e31750bddfe9798889cb121be938e2a7bfe51df8e8a4ba2e58535c"
+  },
+  {
+    "file": "community/aetf/LICENSE-MIT",
+    "url": "https://github.com/Aetf/proflame/blob/ac49e3b709de2f17895c3d7f626ff04f6198198b/LICENSE-MIT",
+    "git_blob_sha": "ab0ee6c4978bf37ae19740d8a983eb514953eb45",
+    "status": "retrieved-via-github",
+    "access_date_pacific": "2026-10-28",
+    "note": "UTF-8 content snapshot from GitHub connector; final newline normalized.",
+    "bytes": 1083,
+    "sha256": "deb1d931758d10d23cb454f5b33da2136b97855613a4cc5edbc70eead7e17359"
+  },
+  {
+    "file": "community/aetf/COPYRIGHT",
+    "url": "https://github.com/Aetf/proflame/blob/ac49e3b709de2f17895c3d7f626ff04f6198198b/COPYRIGHT",
+    "git_blob_sha": "b286ec16abbb02662707e5217a8c568bf7de56b6",
+    "status": "retrieved-via-github",
+    "access_date_pacific": "2026-10-28",
+    "note": "UTF-8 content snapshot from GitHub connector; final newline normalized.",
+    "bytes": 321,
+    "sha256": "23860c2a7b5d96b21569afedf033469bab9fe14a1b24a35068b8641c578ce24d"
+  },
+  {
+    "file": "community/aetf/PROTOCOL.upstream.txt",
+    "url": "https://github.com/Aetf/proflame/blob/ac49e3b709de2f17895c3d7f626ff04f6198198b/docs/PROTOCOL.md",
+    "git_blob_sha": "e78d8a8d8d0daaa687e42d8513a232e043975ebe",
+    "status": "retrieved-via-github",
+    "access_date_pacific": "2026-10-28",
+    "note": "UTF-8 content snapshot from GitHub connector; final newline normalized.",
+    "bytes": 21255,
+    "sha256": "dfc5e25704361f8c638bb9a4fd4d87e2107289c47320fc1fee30ad966e9d9fcf"
+  },
+  {
+    "file": "community/aetf/MAPPING.upstream.txt",
+    "url": "https://github.com/Aetf/proflame/blob/ac49e3b709de2f17895c3d7f626ff04f6198198b/docs/MAPPING.md",
+    "git_blob_sha": "6c0b6135a72fb21de01caf342729e5b04450757d",
+    "status": "retrieved-via-github",
+    "access_date_pacific": "2026-10-28",
+    "note": "UTF-8 content snapshot from GitHub connector; final newline normalized.",
+    "bytes": 7889,
+    "sha256": "14aa63083d5f963424ccf50d29cbf31b8c2712ef24980dce52b05f2fafc3768e"
+  },
+  {
+    "file": "community/smartfire/fireplace.py",
+    "url": "https://github.com/johnellinwood/smartfire/blob/aa669ae633c2f1e567bd9db94683119f599e081a/smartfire_controller/fireplace.py",
+    "git_blob_sha": "bcd04c36af2795d90c1b0d5ea0b5a06bc91cac23",
+    "status": "retrieved-via-github",
+    "access_date_pacific": "2026-10-28",
+    "note": "UTF-8 content snapshot from GitHub connector; final newline normalized.",
+    "bytes": 8158,
+    "sha256": "63f68003ef4f0fd1d014503f46c8944b78370039031d211095008d1d7edd1eba"
+  },
+  {
+    "file": "community/smartfire/LICENSE.txt",
+    "url": "https://github.com/johnellinwood/smartfire/blob/aa669ae633c2f1e567bd9db94683119f599e081a/LICENSE.txt",
+    "git_blob_sha": "7cbe62b0971248c9a826ffe68b70c668519c447e",
+    "status": "retrieved-via-github",
+    "access_date_pacific": "2026-10-28",
+    "note": "UTF-8 content snapshot from GitHub connector; final newline normalized.",
+    "bytes": 35133,
+    "sha256": "7f64c42d6dc707940c25750edf0ec2d325781675fb95abbff6c939607f360c09"
+  },
+  {
+    "file": "community/esphome-proflame2/README.upstream.txt",
+    "url": "https://github.com/kaechele/esphome-proflame2/blob/main/README.md",
+    "git_blob_sha": "5916cc2f4a09f0e1ab7351abc273a874ad032d16",
+    "status": "retrieved-via-github",
+    "access_date_pacific": "2026-10-28",
+    "note": "UTF-8 content snapshot from GitHub connector; final newline normalized.",
+    "bytes": 7249,
+    "sha256": "0de03a038de186b9f08f94d6d4e008a3e22c71f70228d5ef36da805ce63eb759"
+  },
+  {
+    "file": "community/esphome-proflame2/proflame2.cpp",
+    "url": "https://github.com/kaechele/esphome-proflame2/blob/bb67453c8782385e2b895274d482e60eb4808934/components/proflame2/proflame2.cpp",
+    "git_blob_sha": "619b451d338bcc5837c1325c03641aba19b246c3",
+    "status": "retrieved-via-github",
+    "access_date_pacific": "2026-10-28",
+    "note": "UTF-8 content snapshot from GitHub connector; final newline normalized.",
+    "bytes": 19523,
+    "sha256": "0ecf9defbeedf51e6b8dad4fa9bb78e0cba337a981719dd1f09b265f8a82b035"
+  },
+  {
+    "file": "community/esphome-proflame2/proflame2.h",
+    "url": "https://github.com/kaechele/esphome-proflame2/blob/bb67453c8782385e2b895274d482e60eb4808934/components/proflame2/proflame2.h",
+    "git_blob_sha": "034b8c66062489da27f32fe68366c757a79353b3",
+    "status": "retrieved-via-github",
+    "access_date_pacific": "2026-10-28",
+    "note": "UTF-8 content snapshot from GitHub connector; final newline normalized.",
+    "bytes": 7050,
+    "sha256": "6632d47d9a8e643054c80ef88af6bccc178e476353b50eecf81f06bfded62549"
+  },
+  {
+    "file": "community/esphome-proflame2/LICENSE",
+    "url": "https://github.com/kaechele/esphome-proflame2/blob/bb67453c8782385e2b895274d482e60eb4808934/LICENSE",
+    "git_blob_sha": "f288702d2fa16d3cdf0035b15a9fcbc552cd88e7",
+    "status": "retrieved-via-github",
+    "access_date_pacific": "2026-10-28",
+    "note": "UTF-8 content snapshot from GitHub connector; final newline normalized.",
+    "bytes": 35149,
+    "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+  },
+  {
+    "file": "community/rtl_433/proflame2.c",
+    "url": "https://github.com/merbanan/rtl_433/blob/master/src/devices/proflame2.c",
+    "git_blob_sha": "2efb605ab53a5f05a889ab238b124931a46f09d2",
+    "status": "retrieved-via-github",
+    "access_date_pacific": "2026-10-28",
+    "note": "UTF-8 content snapshot from GitHub connector; final newline normalized.",
+    "bytes": 5772,
+    "sha256": "f6ba22392ab2b1ee43076ba311302fa294324b8dc43a86230b2089ce45db5ab7"
+  },
+  {
+    "file": "community/rtl_433/COPYING",
+    "url": "https://github.com/merbanan/rtl_433/blob/master/COPYING",
+    "git_blob_sha": "d511905c1647a1e311e8b20d5930a37a9c2531cd",
+    "status": "retrieved-via-github",
+    "access_date_pacific": "2026-10-28",
+    "note": "UTF-8 content snapshot from GitHub connector; final newline normalized.",
+    "bytes": 17987,
+    "sha256": "ab15fd526bd8dd18a9e77ebc139656bf4d33e97fc7238cd11bf60e2b9b8666c6"
+  },
+  {
+    "file": "community/smartfire/README.upstream.txt",
+    "url": "https://github.com/johnellinwood/smartfire/blob/aa669ae633c2f1e567bd9db94683119f599e081a/README.md",
+    "git_blob_sha": "c5aaefc9d5d5569ddbcde9c039c2d83350af0110",
+    "status": "retrieved-via-github",
+    "access_date_pacific": "2026-10-28",
+    "note": "UTF-8 content snapshot from GitHub connector; final newline normalized.",
+    "bytes": 10000,
+    "sha256": "6317de3c28ea8119879ab1f8b570eccdc98da9d959354ef9a299fd923e62eb50"
+  },
+  {
+    "file": "community/aetf/power_on_off.timings.json",
+    "url": "https://github.com/Aetf/proflame/blob/ac49e3b709de2f17895c3d7f626ff04f6198198b/tests/frames/power_on_off.timings.json",
+    "git_blob_sha": "f4e47e9fc01219abf5c708493c794b3ab5bbef7e",
+    "status": "retrieved-via-github",
+    "access_date_pacific": "2026-10-28",
+    "note": "UTF-8 content snapshot from GitHub connector; final newline normalized.",
+    "bytes": 15447,
+    "sha256": "02a24ed506dbf1313c9c7d3ae36364f2569bf3dbb30b142e6b14772a03f03942"
+  },
+  {
+    "file": "community/proflame_wifi/README.upstream.txt",
+    "url": "https://github.com/psaab/proflame_wifi/blob/main/README.md",
+    "git_blob_sha": "778c59ebb8e71f12bdb0cd8ba6ef8ab95b0f086f",
+    "status": "retrieved-via-github",
+    "access_date_pacific": "2026-10-28",
+    "note": "UTF-8 content snapshot from GitHub connector; final newline normalized.",
+    "bytes": 6797,
+    "sha256": "fff4438be39183d6ecaf1909e92121027cb8742660361e621f3f6b1170339069"
+  },
+  {
+    "file": "community/proflame_wifi/PROTOCOL.upstream.txt",
+    "url": "https://github.com/psaab/proflame_wifi/blob/main/PROTOCOL.md",
+    "git_blob_sha": "677626da17744371d3767024d4424b4f7177fc93",
+    "status": "retrieved-via-github",
+    "access_date_pacific": "2026-10-28",
+    "note": "UTF-8 content snapshot from GitHub connector; final newline normalized.",
+    "bytes": 9193,
+    "sha256": "497c75341e12ea3af941f8507bf00a1b2eaabaece7a35073919997143d39061b"
+  },
+  {
+    "file": "community/proflame_wifi/LICENSE",
+    "url": "https://github.com/psaab/proflame_wifi/blob/main/LICENSE",
+    "git_blob_sha": "c13f99117e366fd54b4c097b67ca34dfb1fb8ba1",
+    "status": "retrieved-via-github",
+    "access_date_pacific": "2026-10-28",
+    "note": "UTF-8 content snapshot from GitHub connector; final newline normalized.",
+    "bytes": 1056,
+    "sha256": "75486ea0af9309140ca6e2c401d7e67bea8f4892344e5707f6394dc5e83dfc44"
+  },
+  {
+    "file": "web-evidence.json",
+    "status": "locally-authored",
+    "note": "Local research provenance or offline analysis; sources identified in bibliography and file.",
+    "access_date_pacific": "2026-10-28",
+    "bytes": 2475,
+    "sha256": "8cc7c28cc2bc9ea24aec040723aba275a9a2474df5ff838f8bd9d518ef0d6887"
+  },
+  {
+    "file": "check_evidence.py",
+    "status": "locally-authored",
+    "note": "Local research provenance or offline analysis; sources identified in bibliography and file.",
+    "access_date_pacific": "2026-10-28",
+    "bytes": 4001,
+    "sha256": "74168221c536e1fc55e7458db60477ab2a10e95ba44e071f0c6b70f0d0cfbf3d"
+  },
+  {
+    "file": "offline-evidence-checks.json",
+    "status": "locally-authored",
+    "note": "Local research provenance or offline analysis; sources identified in bibliography and file.",
+    "access_date_pacific": "2026-10-28",
+    "bytes": 962,
+    "sha256": "d42c8d427fab6a0053079c9f2c5a18b29d50a89206b29d5fc44d53e9d676937c"
+  }
+]

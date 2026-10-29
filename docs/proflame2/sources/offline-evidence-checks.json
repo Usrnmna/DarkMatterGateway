@@ -1,0 +1,47 @@
+{
+  "access_date_pacific": "2026-10-28",
+  "method": "Offline independent arithmetic over published data only; no upstream code executed.",
+  "csv_rows": 220,
+  "identities": 5,
+  "calibration_rows": 5,
+  "held_out_rows": 215,
+  "held_out_checksum_bytes": 430,
+  "checksum_mismatches": [],
+  "derived_keys_hex": {
+    "21dd02": [
+      "7d",
+      "8b"
+    ],
+    "47eb02": [
+      "61",
+      "a7"
+    ],
+    "7d1402": [
+      "7e",
+      "9e"
+    ],
+    "a4ed02": [
+      "eb",
+      "28"
+    ],
+    "bf3902": [
+      "dd",
+      "1c"
+    ]
+  },
+  "matrix_counterexample": {
+    "data": "4b52020106",
+    "predicted": "14e7",
+    "reported_observed": "1de5",
+    "xor_difference": "0902"
+  },
+  "uart_examples": 13,
+  "uart_xor_failures": [],
+  "rf_complete_symbols": 182,
+  "duration_us_at_450": 81900,
+  "aetf_final_mark_duration_us_at_450": 81450,
+  "rf_sample_51": {
+    "power": 1,
+    "thermostat": 0
+  }
+}

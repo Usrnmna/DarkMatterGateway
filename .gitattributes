@@ -1,0 +1,20 @@
+# Source, build configuration, and Unix scripts use LF on every platform.
+* text=auto eol=lf
+*.ps1 text eol=crlf
+
+# Binary documents, images, and build artifacts require byte-preserving handling.
+*.pdf binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.ico binary
+*.bin binary
+*.elf binary
+*.zip binary
+*.gz binary
+
+# Retained references have byte-level hashes in their retrieval manifest.
+docs/proflame2/sources/** -text !eol
+docs/proflame2/sources/community/** linguist-vendored

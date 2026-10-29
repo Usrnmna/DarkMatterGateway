@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="540" viewBox="0 0 1200 540" role="img" aria-labelledby="title description">
+  <title id="title">Matter IR Terminal proposed control flow</title>
+  <desc id="description">An original IR remote supplies learned commands. A connected computer controls learning, testing, saving, and replay. A Matter controller provides Wi-Fi controls for configured lights and fans. The terminal selects its onboard array or one of two wired emitters to send infrared to an existing appliance receiver. Hardware remains unbuilt and appliance response is unverified.</desc>
+  <!-- Conceptual connections only; blocks do not depict a physical product. -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#63ded2"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="540" rx="20" fill="#101e30"/>
+  <g font-family="Segoe UI, Arial, sans-serif">
+    <text x="40" y="45" fill="#63ded2" font-size="15" font-weight="700" letter-spacing="2">PROPOSED CONTROL FLOW</text>
+    <text x="40" y="91" fill="#f2f7fc" font-size="36" font-weight="700">Learn. Confirm. Replay.</text>
+    <rect x="884" y="30" width="276" height="42" rx="21" fill="#3c301d" stroke="#f0bf62"/>
+    <text x="1022" y="57" text-anchor="middle" fill="#ffdc97" font-size="17" font-weight="700">HARDWARE UNBUILT</text>
+    <text x="40" y="124" fill="#b9cadd" font-size="18">Named IR commands and configured Matter controls, with three selectable emitter zones.</text>
+    <path d="M40 145H1160" stroke="#34475f"/>
+
+    <!-- The computer connection supports the operator's confirmation workflow. -->
+    <g fill="#1b2d43" stroke="#526b89" stroke-width="1.5">
+      <rect x="40" y="170" width="280" height="76" rx="12"/>
+      <rect x="40" y="276" width="280" height="76" rx="12"/>
+      <rect x="40" y="382" width="280" height="76" rx="12"/>
+    </g>
+    <g fill="#f2f7fc" font-size="22" font-weight="600">
+      <text x="60" y="201">Original IR remote</text>
+      <text x="60" y="307">Connected computer</text>
+      <text x="60" y="413">Matter controller</text>
+    </g>
+    <g fill="#b9cadd" font-size="17">
+      <text x="60" y="227">Command capture</text>
+      <text x="60" y="333">Learn · test · save · replay</text>
+      <text x="60" y="439">Wi-Fi · configured lights / fans</text>
+    </g>
+    <g fill="none" stroke="#63ded2" stroke-width="2.5" marker-end="url(#arrow)">
+      <path d="M320 208H365Q375 208 375 218V240Q375 250 385 250H418"/>
+      <path d="M320 314H418"/>
+      <path d="M320 420H365Q375 420 375 410V388Q375 378 385 378H418"/>
+    </g>
+
+    <!-- Central block represents the specified terminal role, not a built board. -->
+    <rect x="420" y="210" width="300" height="210" rx="18" fill="#173c46" stroke="#63ded2" stroke-width="2"/>
+    <text x="570" y="259" text-anchor="middle" fill="#97eee4" font-size="15" font-weight="700" letter-spacing="2">TERMINAL DESIGN</text>
+    <text x="570" y="307" text-anchor="middle" fill="#f2f7fc" font-size="29" font-weight="700">Matter IR Terminal</text>
+    <text x="570" y="344" text-anchor="middle" fill="#d0e5e9" font-size="19">Learn and store commands</text>
+    <text x="570" y="375" text-anchor="middle" fill="#d0e5e9" font-size="19">Replay on explicit control</text>
+
+    <path d="M720 314H818" fill="none" stroke="#63ded2" stroke-width="2.5" marker-end="url(#arrow)"/>
+    <text x="770" y="297" text-anchor="middle" fill="#b9cadd" font-size="15">Select one</text>
+    <rect x="820" y="210" width="340" height="170" rx="12" fill="#1b2d43" stroke="#526b89" stroke-width="1.5"/>
+    <text x="844" y="246" fill="#f2f7fc" font-size="22" font-weight="600">Three emitter zones</text>
+    <g fill="#d0e5e9" font-size="19">
+      <text x="844" y="283">0  Onboard IR array</text>
+      <text x="844" y="317">1  Wired emitter · port J2</text>
+      <text x="844" y="351">2  Wired emitter · port J3</text>
+    </g>
+    <path d="M990 380V424" fill="none" stroke="#63ded2" stroke-width="2.5" marker-end="url(#arrow)"/>
+    <text x="1010" y="407" fill="#b9cadd" font-size="16">Infrared</text>
+    <rect x="820" y="426" width="340" height="56" rx="12" fill="#1b2d43" stroke="#526b89" stroke-width="1.5"/>
+    <text x="990" y="461" text-anchor="middle" fill="#f2f7fc" font-size="21" font-weight="600">Existing appliance receiver</text>
+
+    <text x="40" y="509" fill="#ffdc97" font-size="17">Conceptual connections only. Optical coverage and appliance response remain unverified.</text>
+  </g>
+</svg>

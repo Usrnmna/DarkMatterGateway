@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "devices": [
+    {
+      "id": "room_light",
+      "kind": "light",
+      "enabled": false,
+      "zone": 0,
+      "manufacturer": null,
+      "model": null,
+      "remote_model": null,
+      "transport_verified_ir": false,
+      "discrete_commands_verified": false,
+      "commands": {"on": "light_on", "off": "light_off"}
+    },
+    {
+      "id": "room_fan",
+      "kind": "fan",
+      "enabled": false,
+      "zone": 0,
+      "manufacturer": null,
+      "model": null,
+      "remote_model": null,
+      "transport_verified_ir": false,
+      "discrete_commands_verified": false,
+      "commands": {"off": "fan_off", "low": "fan_low", "medium": "fan_medium", "high": "fan_high"}
+    },
+    {
+      "id": "fireplace",
+      "kind": "gas_fireplace",
+      "enabled": false,
+      "zone": 1,
+      "manufacturer": null,
+      "model": null,
+      "remote_model": null,
+      "transport_verified_ir": false,
+      "discrete_commands_verified": false,
+      "remote_operation_permitted": false,
+      "commands": {"on": "fire_on", "off": "fire_off", "flame_up": "fire_flame_up", "flame_down": "fire_flame_down"}
+    },
+    {
+      "id": "portable_ac",
+      "kind": "portable_ac",
+      "enabled": false,
+      "zone": 2,
+      "manufacturer": null,
+      "model": null,
+      "remote_model": null,
+      "transport_verified_ir": false,
+      "discrete_commands_verified": false,
+      "temperature_unit": null,
+      "temperature_min": null,
+      "temperature_max": null,
+      "state_frame_verified": false,
+      "commands": {"off": "ac_off", "cool_preset": "ac_cool", "fan_preset": "ac_fan", "dry_preset": "ac_dry"}
+    }
+  ]
+}

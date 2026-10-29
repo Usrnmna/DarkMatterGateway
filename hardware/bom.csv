@@ -1,0 +1,55 @@
+references,quantity,population,description,value_or_rating,manufacturer,manufacturer_part_number,package_or_form,source_url,notes
+U1,1,standard,MCU WiFi BLE module,16MB flash 8MB PSRAM,Espressif,ESP32-S3-WROOM-1-N16R8,module,https://www.espressif.com/sites/default/files/documentation/esp32-s3-wroom-1_wroom-1u_datasheet_en.pdf,PCB antenna keepout required
+U2,1,standard,Always-on 3.3V LDO,500mA device used for CC logic only,Texas Instruments,TLV75533PDBVR,SOT23-5,https://www.ti.com/lit/ds/symlink/tlv755p.pdf,Do not power MCU from this regulator
+U3,1,standard,Type-C current detector,UFP GPIO mode,Texas Instruments,TUSB320LAIRWBR,X2QFN12 RWB,https://www.ti.com/lit/ds/symlink/tusb320lai.pdf,Integrated Rd; no external CC pulldowns
+U4,1,standard,Schmitt inverter,3.3V always-on,Texas Instruments,SN74LVC1G14DBVR,SOT23-5,https://www.ti.com/lit/ds/symlink/sn74lvc1g14.pdf,OUT1 inversion
+U5,1,standard,Current-limited main rail switch,2.5-6.5V;1.195A nominal limit,Texas Instruments,TPS2553DBVR,SOT23-6,https://www.ti.com/lit/ds/symlink/tps2553.pdf,Constant-current version; ILIM resistor21.5k1percent; not TPS2553-1
+U6,1,standard,Fixed output buck,3.3V 2A,Diodes Incorporated,AP63203WU-7,TSOT26,https://www.diodes.com/datasheet/download/AP63200-AP63201-AP63203-AP63205.pdf,FB connects directly to3.3V output
+U7,1,standard,Demodulating IR receiver,38kHz,Vishay,TSOP38438,Minicast through-hole,https://www.vishay.com/docs/82491/tsop382.pdf,Pin1OUT pin2GND pin3VS
+U8,1,standard,Demodulating IR receiver,56kHz,Vishay,TSOP38456,Minicast through-hole,https://www.vishay.com/docs/82491/tsop382.pdf,Pin1OUT pin2GND pin3VS
+U9,1,standard,Carrier-output IR learning receiver,30-60kHz,Vishay,TSMP98000,Minicast through-hole,https://www.vishay.com/docs/82908/tsmp98000.pdf,Requires external4.7k pullup
+U10,1,standard,Quad tri-state buffer,3.3V active-low enables,Texas Instruments,SN74LVC125APWR,TSSOP14,https://www.ti.com/lit/ds/symlink/sn74lvc125a.pdf,Three channels used
+Q1 Q2 Q3,3,standard,Logic-level N MOSFET,30V RDSon specified at2.5V,AOS,AO3400A,SOT23,https://www.aosmd.com/res/data_sheets/AO3400A.pdf,Pin1G pin2S pin3D
+D1 D2 D3 D4,4,standard,Directional IR emitter,940nm,Vishay,TSAL6200,5mm through-hole,https://www.vishay.com/docs/81010/tsal6200.pdf,One68ohm resistor per LED
+D5 D6,2,harness,External IR emitter,940nm,Vishay,TSAL6200,5mm through-hole,https://www.vishay.com/docs/81010/tsal6200.pdf,One emitter per harness
+D7,1,standard,Status LED,Green low current,Generic,specification-selected,0805,,Select visible output at1-2mA
+D8 D9 D10 D11,4,standard,USB and CC ESD shunt,5.5V operating channel,Texas Instruments,TPD1E05U06DPYR,X1SON2 DPY,https://www.ti.com/lit/ds/symlink/tpd1e05u06.pdf,Pin1signal pin2GND; system ESD not validated
+D12 D13,2,standard,Drain clamp Schottky,40V 1A,Vishay,SS14-E3/61T,SMA DO214AC,https://www.vishay.com/docs/88746/ss12.pdf,Anode at drain cathode at5V_MAIN
+D14 D15 D16 D17,4,standard,Emitter port transient shunt,6V standoff unidirectional,Littelfuse,SMAJ6.0A,SMA DO214AC,https://www.littelfuse.com/~/media/electronics/datasheets/tvs_diodes/littelfuse_tvs_diode_smaj_datasheet.pdf.pdf,One per conductor; cathode at port net
+D18 D19,2,harness,Antiparallel LED protection diode,Fast silicon,Vishay,1N4148-TAP,DO35 axial,https://www.vishay.com/docs/81857/1n4148.pdf,Cathode at IR LED anode
+F1,1,standard,Resettable input fuse,1.5A hold at20C;1.34A at40C,Littelfuse,1206L150THWR,1206,https://www.littelfuse.com/assetdocs/littelfuse-ptc-1206l-datasheet?assetguid=2b6a1515-d4ee-4c83-8bd4-152b4901b8f5,Verify local thermal derating and measured drop; U5 limits main current
+L1,1,standard,Shielded buck inductor,4.7uH20percent DCR40mOhm max,Coilcraft,XAL5030-472MEC,5mm molded SMD,https://www.coilcraft.com/en-us/products/power/shielded-inductors/molded-inductor/xal/xal50xx/xal5030-472/,6.7A saturation at30percent drop;4.3A for20C rise
+J1,1,standard,USB-C receptacle,USB2.0 16contact,GCT,USB4105-GF-A,SMT plus shell stakes,https://gct.co/files/drawings/usb4105.pdf,Verify exact footprint from drawing
+J2 J3,2,standard,External emitter header,2position2.50mm keyed,JST,B2B-XH-A,Through-hole,https://www.jst-mfg.com/product/index.php?lang=2&series=277,Pin1current-limited anode pin2switched return
+J4,1,standard,UART service header,1x4 2.54mm,Generic,specification-selected,Through-hole,,No power pin
+J5,1,standard,Expansion header,6position2.50mm keyed,JST,B6B-XH-A,Through-hole,https://www.jst-mfg.com/product/index.php?lang=2&series=277,Short internal3.3V cables only
+SW1 SW2 SW3,3,standard,Momentary normally-open switch,Reset boot commissioning,Generic,specification-selected,Through-hole or SMT,,Footprint must match selected switch
+C1 C2 C5 C15,4,standard,Ceramic capacitor,1uF10V X7R10percent,Generic,specification-selected,0805,,Check effective capacitance under bias
+C3 C4 C9 C14 C16 C18 C20 C21 C23,9,standard,Ceramic capacitor,100nF16V X7R10percent,Generic,specification-selected,0603,,Local bypass or button filter
+C7,1,standard,Bulk electrolytic capacitor,220uF10V105C low ESR,Generic,specification-selected,Radial or SMD,,Downstream of main switch; observe polarity
+C8 C13 C24,3,standard,Ceramic capacitor,10uF16V X7R10percent,Generic,specification-selected,1206,,Buck input module and emitter bypass
+C10,1,standard,Bootstrap capacitor,100nF25V X7R10percent,Generic,specification-selected,0603,,Between U6 BST and SW
+C11 C12,2,standard,Ceramic output capacitor,22uF10V X7R20percent,Generic,specification-selected,1210,,Verify capacitance under3.3V bias
+C17 C19 C22,3,standard,Receiver bulk bypass,4.7uF10V X7R10percent,Generic,specification-selected,0805,,One per receiver filtered rail
+C25,1,optional,Ceramic ADC filter,10nF16V X7R10percent,Generic,specification-selected,0603,,Populate with R30/R31 only
+R1,1,standard,VBUS detect resistor,887kOhm1percent0.1W,Generic,specification-selected,0603,,U3 VBUS_DET series resistor
+R2 R3 R7 R8 R9 R11 R24 R25 R26 R27 R40 R41,12,standard,Pull resistor,10kOhm1percent0.1W,Generic,specification-selected,0603,,See connection schedule for direction
+R6,1,standard,Current-limit setting resistor,21.5kOhm1percent0.1W,Generic,specification-selected,0603,,U5 ILIM toGND; place adjacent toU5
+R10 R32 R33 R42,4,standard,Resistor,1kOhm1percent0.1W,Generic,specification-selected,0603,,Status LED UART and main-rail discharge
+R43,1,standard,Fault output pullup,100kOhm1percent0.1W,Generic,specification-selected,0603,,U5 FAULT to3V3_AON; test point only
+R12 R13,2,standard,USB series resistor,22Ohm1percent0.1W,Generic,specification-selected,0603,,Near ESP32
+R14 R15 R16 R17 R18 R19,6,standard,Receiver supply or signal resistor,100Ohm1percent0.1W,Generic,specification-selected,0603,,Supply and output are separate resistors
+R20,1,standard,Carrier output pullup,4.7kOhm1percent0.1W,Generic,specification-selected,0603,,To filtered U9 supply
+R21 R22 R23,3,standard,Gate series resistor,220Ohm1percent0.1W,Generic,specification-selected,0603,,Buffer to gate
+R28 R29,2,optional,I2C pullup resistor,4.7kOhm1percent0.1W,Generic,specification-selected,0603,,DNP until expansion bus selected
+R30 R31,2,optional,ADC divider resistor,100kOhm1percent0.1W,Generic,specification-selected,0603,,Sense switched5V only
+R34 R35 R36 R37,4,standard,Onboard LED current limiting resistor,68Ohm1percent1W,Generic,specification-selected,2512,,Maintain power rating at40C
+R38 R39,2,standard,External emitter current limiting resistor,220Ohm1percent0.5W,Generic,specification-selected,2010,,Maintain power rating at40C
+H1 H2,2,harness,Emitter wire housing,2position2.50mm,JST,XHP-2,Crimp housing,https://www.jst-mfg.com/product/index.php?lang=2&series=277,Matches J2/J3
+HC1 HC2 HC3 HC4,4,harness,Emitter crimp contact,26AWG compatible,JST,SXH-001T-P0.6,Crimp terminal,https://www.jst-mfg.com/product/index.php?lang=2&series=277,Use appropriate crimp tooling
+W1 W2,2,harness,Emitter cable,2conductor26AWG twisted up to2m,Generic,specification-selected,Cable,,Length subject to validation
+M1 M2,2,harness,Emitter hood and attachment,Opaque IR emitter cover,Generic,specification-selected,Mechanical,,Non-damaging attachment compatible with appliance temperature
+PS1,1,external,USB-C power supply,5V Type-C advertisement>=1.5A,Generic,specification-selected,Certified external supply,,No USB PD trigger; verify advertisement
+W3,1,external,USB-C cable,3A compliant data-capable,Generic,specification-selected,Cable,,Data required only for native USB programming
+ENC1,1,external,Enclosure,Nonmetallic indoor with IR windows,Generic,specification-selected,Mechanical,,0-40C target and antenna keepout
+PCB1,1,pending,Custom four-layer PCB,Not yet routed or released,Project,pending-CAD,PCB,,No fabrication files supplied

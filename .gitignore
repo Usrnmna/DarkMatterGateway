@@ -1,0 +1,44 @@
+# Local SDKs and Python environments.
+/.cache/
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Generated firmware, host tests, and local export packages.
+/build/
+/dist/
+/firmware/build*/
+/firmware/managed_components/
+/firmware/sdkconfig
+/firmware/sdkconfig.old
+# firmware/sdkconfig.defaults and firmware/dependencies.lock remain versioned.
+
+# Local appliance data and private commissioning material.
+captures/
+/config/*.local.json
+/private/
+.env
+.env.*
+!.env.example
+!.env.*.example
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Manufacturer references retained locally and excluded from publication.
+/docs/proflame2/sources/marquis-proflame2.pdf
+/docs/proflame2/sources/montigo-wifi-xg0681.pdf
+/docs/proflame2/sources/sit-ifc-ffrt10-2018.pdf
+/docs/proflame2/sources/sit-system-9955116-02.pdf
+/docs/proflame2/sources/sit-transmitter-ce-9957120-00.pdf
+/docs/proflame2/sources/sit-wall-transmitter.pdf
+/docs/proflame2/sources/ti-cc1101.pdf
+
+# Local logs and operating-system metadata.
+*.log
+.DS_Store
+Thumbs.db
+Desktop.ini

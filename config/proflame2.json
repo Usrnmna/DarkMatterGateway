@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "enabled": false,
+  "device_id": "fireplace",
+  "identity": {
+    "appliance": null,
+    "ifc": null,
+    "handset": null,
+    "controller_board": null,
+    "interface_revision": null
+  },
+  "qualification_record": null,
+  "qualified_for_control": false,
+  "fields": [],
+  "timings": {
+    "response_timeout_ms": null,
+    "inter_request_ms": null,
+    "resync_quiet_ms": null,
+    "snapshot_max_age_ms": null,
+    "inter_byte_ms": null
+  }
+}

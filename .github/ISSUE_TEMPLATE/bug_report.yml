@@ -1,0 +1,51 @@
+name: Bug report
+description: Report a reproducible software, build, documentation, or hardware-design problem.
+body:
+  - type: markdown
+    attributes:
+      value: >-
+        Include only redacted logs and configuration. Exclude Wi-Fi credentials,
+        Matter setup codes, private keys, and private command captures.
+        Host-test results and target compilation do not establish physical-device behavior.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Affected area
+      options:
+        - Host tests or configuration tools
+        - SDK setup or firmware compilation
+        - Console, IR, or Matter behavior
+        - Optional Proflame 2 backend
+        - Documentation or hardware design
+        - GitHub automation
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Revision and environment
+      description: >-
+        Include the commit or source revision, operating system, Python/compiler
+        versions, and SDK revisions when relevant. Identify whether the report
+        concerns a host test, target build, or physical device.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction steps
+      description: Include the exact command and a minimal redacted configuration when applicable.
+    validations:
+      required: true
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Expected and observed behavior
+      description: Distinguish expected behavior from directly observed results.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Logs or supporting evidence
+      description: Include relevant redacted output, document links, or measurement conditions.

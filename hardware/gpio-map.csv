@@ -1,0 +1,30 @@
+gpio,module_pin,net,direction,default,electrical_connection
+4,4,IR_TX_ARRAY,output,LOW,U10 pin2 input1A
+5,5,IR_TX_EXT1,output,LOW,U10 pin5 input2A
+6,6,IR_TX_EXT2,output,LOW,U10 pin9 input3A
+7,7,IR_RX_EXP,input,unused,J5 pin3 optional receiver
+8,12,IR_RX_38,input,idle_HIGH,U7 pin1 via R17
+9,17,IR_RX_56,input,idle_HIGH,U8 pin1 via R18
+10,18,IR_RX_CARRIER,input,carrier_capture,U9 pin1 via R19
+11,19,FEEDBACK_SDA,bidirectional,unused,J5 pin4 optional 3.3V I2C
+12,20,FEEDBACK_SCL,output,unused,J5 pin5 optional 3.3V I2C
+13,21,EXP_RESERVED,configurable,unused,J5 pin6 reserved
+14,22,COMMISSION_N,input,pulled_HIGH,R9 10k pullup and SW3 to GND
+18,11,TX_OE_N,output,pulled_HIGH,U10 pins1/4/10 and R11 10k pullup
+19,13,USB_D_MINUS,bidirectional,USB,R12 22ohm to J1 A7/B7
+20,14,USB_D_PLUS,bidirectional,USB,R13 22ohm to J1 A6/B6
+21,23,STATUS_LED,output,LOW,R10 1k to D7 anode
+1,39,MAIN_5V_SENSE,analog,optional,R30/R31 100k divider from switched5V only
+43,37,UART_TX,output,ROM_console,J4 pin2 via R32 1k
+44,36,UART_RX,input,ROM_console,J4 pin3 via R33 1k
+0,27,BOOT_N,input,pulled_HIGH,R8 10k pullup and SW2 to GND
+3,15,STRAP_RESERVED,input,unconnected,Do not allocate
+45,26,STRAP_RESERVED,input,unconnected,Do not allocate
+46,16,STRAP_RESERVED,input,unconnected,Do not allocate
+35,28,PSRAM_RESERVED,internal,unconnected,N16R8 octal PSRAM reservation
+36,29,PSRAM_RESERVED,internal,unconnected,N16R8 octal PSRAM reservation
+37,30,PSRAM_RESERVED,internal,unconnected,N16R8 octal PSRAM reservation
+39,32,JTAG_TCK,reserved,unconnected,Optional test point only
+40,33,JTAG_TDO,reserved,unconnected,Optional test point only
+41,34,JTAG_TDI,reserved,unconnected,Optional test point only
+42,35,JTAG_TMS,reserved,unconnected,Optional test point only

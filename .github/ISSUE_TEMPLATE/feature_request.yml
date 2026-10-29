@@ -1,0 +1,24 @@
+name: Feature request
+description: Describe a use case and the expected result of a proposed change.
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or use case
+      description: Describe the limitation and the affected workflow or device.
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Proposed behavior
+      description: Describe the expected result and how it could be verified.
+    validations:
+      required: true
+  - type: textarea
+    id: constraints
+    attributes:
+      label: Compatibility, evidence, and alternatives
+      description: >-
+        Identify relevant hardware or protocol evidence, compatibility constraints,
+        and alternatives. Separate proposals from tested capabilities.

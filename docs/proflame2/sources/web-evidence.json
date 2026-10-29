@@ -1,0 +1,58 @@
+[
+  {
+    "id": "S07",
+    "excerpt": "For Proflame 2 models, a regular SPST wall switch will work.",
+    "title": "Gas Fireplace Wall Switch FAQ | Montigo",
+    "url": "https://www.montigo.com/blog/gas-fireplace-wall-switch-faq/",
+    "access_date_pacific": "2026-10-28",
+    "retrieval": "Firecrawl public-page scrape",
+    "content_retained": "Short excerpt only; no complete page archive",
+    "page_modified_metadata": "2023-07-18T20:11:34+00:00"
+  },
+  {
+    "id": "S14",
+    "excerpt": "The full pinout is `3V3 | TX | RX | GND` and the IFC’s serial parameters are 9600–8-N-1.",
+    "title": "System Information - Bonaparte 1.0.2 documentation",
+    "url": "https://bonaparte.readthedocs.io/en/latest/system_information.html",
+    "access_date_pacific": "2026-10-28",
+    "retrieval": "Firecrawl public-page scrape",
+    "content_retained": "Short excerpt only; no complete page archive"
+  },
+  {
+    "id": "S16",
+    "excerpt": "The eFIRE Controller uses a binary protocol that follows a TLV schema.",
+    "title": "eFIRE Bluetooth Protocol - Bonaparte 1.0.2 documentation",
+    "url": "https://bonaparte.readthedocs.io/en/latest/bluetooth_protocol.html",
+    "access_date_pacific": "2026-10-28",
+    "retrieval": "Firecrawl public-page scrape",
+    "content_retained": "Short excerpt only; no complete page archive"
+  },
+  {
+    "id": "S19",
+    "excerpt": "half-duplex transmit and receive",
+    "title": "YARD Stick One - Great Scott Gadgets",
+    "url": "https://greatscottgadgets.com/yardstickone/",
+    "access_date_pacific": "2026-10-28",
+    "retrieval": "Firecrawl public-page scrape",
+    "content_retained": "Short excerpt only; no complete page archive"
+  },
+  {
+    "id": "S20",
+    "excerpt": "The ornamental design of a remote control, as shown and described.",
+    "title": "USD548703S1 - Remote control \n        - Google Patents",
+    "url": "https://patents.google.com/patent/USD548703S1/en",
+    "access_date_pacific": "2026-10-28",
+    "retrieval": "Firecrawl public-page scrape",
+    "content_retained": "Short excerpt only; no complete page archive"
+  },
+  {
+    "id": "S21",
+    "excerpt": null,
+    "title": "584 Remote Control series - Sit",
+    "url": "https://www.sitgroup.it/en/product/584-proflame-system/",
+    "access_date_pacific": "2026-10-28",
+    "retrieval": "Firecrawl public-page scrape",
+    "content_retained": "Short excerpt only; no complete page archive",
+    "page_modified_metadata": "2021-07-01T12:32:10+00:00"
+  }
+]

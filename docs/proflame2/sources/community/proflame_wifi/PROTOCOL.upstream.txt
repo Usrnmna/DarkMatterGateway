@@ -1,0 +1,292 @@
+# Proflame WiFi Protocol Specification
+
+## Overview
+
+This document contains the complete reverse-engineered protocol specification for the SIT Group Proflame 2 WiFi fireplace controller.
+
+## Connection Details
+
+- **Protocol**: WebSocket over TCP
+- **Port**: 88
+- **WebSocket Path**: `/`
+- **No authentication required**
+- **Keep-alive**: Send `PROFLAMEPING` every ~5 seconds, expect `PROFLAMEPONG` response
+
+## Initial Connection Sequence
+
+After WebSocket handshake completes:
+1. Client sends: `PROFLAMECONNECTION`
+2. Device responds: `PROFLAMECONNECTIONOPEN`
+3. Device then pushes full status dump as JSON messages
+
+**Note**: The ping/pong messages are plain text, NOT standard WebSocket ping/pong frames.
+
+## Critical Implementation Notes
+
+### JSON Format Requirement
+**⚠️ CRITICAL**: All JSON commands MUST use compact format with NO spaces after colons or commas. The device silently ignores malformed commands.
+
+```
+CORRECT:   {"control0":"main_mode","value0":"5"}
+WRONG:     {"control0": "main_mode", "value0": "5"}
+```
+
+### WebSocket Framing
+- Client-to-server frames MUST be masked (per WebSocket spec)
+- Server-to-client frames are unmasked
+- Use opcode 0x81 for text frames
+
+## Operating Modes (main_mode)
+
+| Value | Mode | Description |
+|-------|------|-------------|
+| 0 | Off | Fireplace completely off |
+| 1 | Standby | Pilot only, not heating |
+| 5 | Manual | Fixed flame height - user controls flame level directly (no thermostat) |
+| 6 | Smart | Thermostat mode - auto-adjusts flame to reach target temperature |
+| 7 | Eco | Energy-saving thermostat mode |
+
+**Power State**: Modes 5, 6, 7 = ON (heating). Modes 0, 1 = OFF (not heating).
+**Thermostat Active**: Only in modes 6 (Smart) and 7 (Eco). Mode 5 (Manual) ignores temperature setpoint.
+
+## Commands (Client → Server)
+
+All commands use this JSON structure:
+```json
+{"control0":"<command>","value0":"<value>"}
+```
+
+### Power/Mode Control
+```json
+{"control0":"main_mode","value0":"0"}     // Off
+{"control0":"main_mode","value0":"5"}     // Manual mode (on)
+{"control0":"main_mode","value0":"6"}     // Smart/thermostat mode (on)
+{"control0":"main_mode","value0":"7"}     // Eco mode (on)
+```
+
+### Flame Control
+```json
+{"control0":"flame_control","value0":"0"} // Flame level 0 (lowest)
+{"control0":"flame_control","value0":"3"} // Flame level 3 (medium)
+{"control0":"flame_control","value0":"6"} // Flame level 6 (highest)
+```
+Range: 0-6
+
+### Fan/Blower Control
+```json
+{"control0":"fan_control","value0":"0"}   // Fan off
+{"control0":"fan_control","value0":"3"}   // Fan medium
+{"control0":"fan_control","value0":"6"}   // Fan high
+```
+Range: 0-6
+
+### Light/Lamp Control
+```json
+{"control0":"lamp_control","value0":"0"}  // Light off
+{"control0":"lamp_control","value0":"3"}  // Light medium
+{"control0":"lamp_control","value0":"6"}  // Light high
+```
+Range: 0-6
+
+### Temperature Setpoint
+```json
+{"control0":"temperature_set","value0":"700"}  // 70°F
+{"control0":"temperature_set","value0":"750"}  // 75°F
+{"control0":"temperature_set","value0":"800"}  // 80°F
+```
+**Encoding**: Temperature in °F × 10. Example: 80°F = "800"
+
+Range: 60°F - 90°F (send as 600-900)
+
+### Thermostat Enable
+```json
+{"control0":"thermo_control","value0":"0"}  // Thermostat off
+{"control0":"thermo_control","value0":"1"}  // Thermostat on
+```
+
+### Pilot Control (Continuous Pilot Ignition)
+```json
+{"control0":"pilot_control","value0":"0"}   // Pilot off
+{"control0":"pilot_control","value0":"1"}   // Pilot on (continuous)
+```
+
+### Auxiliary Output
+```json
+{"control0":"aux_control","value0":"0"}     // Aux off
+{"control0":"aux_control","value0":"1"}     // Aux on
+```
+
+### Split Flow / Front Flame
+```json
+{"control0":"split_control","value0":"0"}   // Front flame off
+{"control0":"split_control","value0":"1"}   // Front flame on
+```
+
+### Timer (Auto-Off)
+```json
+{"control0":"timer_set","value0":"60000"}     // 1 minute (60,000 ms)
+{"control0":"timer_set","value0":"3600000"}   // 1 hour (3,600,000 ms)
+{"control0":"timer_set","value0":"21600000"}  // 6 hours max (21,600,000 ms)
+{"control0":"timer_status","value0":"1"}      // Start timer
+{"control0":"timer_status","value0":"0"}      // Stop timer
+```
+
+**⚠️ CRITICAL**: Timer values are in MILLISECONDS, not seconds or minutes!
+
+**Timer Operation Sequence**:
+1. To start a timer:
+   - Send `timer_set` with duration in milliseconds
+   - Wait ~200ms for device to process
+   - Send `timer_status` = "1" to start countdown
+2. To stop a timer:
+   - Send `timer_status` = "0"
+3. When timer expires, device automatically sets `main_mode` to "0" (off)
+
+**Timer Quirks**:
+- `timer_count` reports remaining time only when timer is running
+- When timer is stopped, `timer_count` may equal `timer_set`
+- Device sends `timer_count` updates approximately every second when running
+
+### Keep-Alive Ping
+```
+PROFLAMEPING
+```
+(Plain text, not JSON)
+
+## Status Messages (Server → Client)
+
+The device pushes status updates automatically. Two formats are used:
+
+### Indexed Format
+```json
+{"status0":"<field>","value0":"<value>"}
+```
+
+Or multi-field:
+```json
+{"status0":"<field1>","value0":"<val1>","status1":"<field2>","value1":"<val2>"}
+```
+
+### Direct Key-Value Format
+```json
+{"temperature_read":"700","timer_read":"3600000","rssi":"45"}
+```
+
+### Status Fields
+
+| Field | Alias | Description | Example Values |
+|-------|-------|-------------|----------------|
+| main_mode | - | Operating mode | "0", "1", "5", "6", "7" |
+| flame_control | - | Current flame level | "0" - "6" |
+| fan_control | - | Current fan level | "0" - "6" |
+| lamp_control | - | Current light level | "0" - "6" |
+| temperature_set | - | Thermostat setpoint (÷10 for °F) | "700" = 70°F |
+| room_temperature | temperature_read | Current room temp (÷10 for °F) | "720" = 72°F |
+| thermo_control | - | Thermostat enabled | "0" or "1" |
+| pilot_control | - | Pilot status | "0" or "1" |
+| aux_control | - | Aux output status | "0" or "1" |
+| split_control | - | Front flame status | "0" or "1" |
+| burner_status | - | Burner state bitfield | "32706", "-4370" |
+| wifi_signal_str | rssi | WiFi signal (use as negative dBm) | "53" → -53 dBm |
+| timer_status | - | Timer running | "0" or "1" |
+| timer_set | - | Timer duration (ms) | "3600000" = 1hr |
+| timer_count | timer_read | Timer remaining (ms) | "1800000" = 30min |
+| fw_revision | - | Firmware version | "1.0.5" |
+| dongle_name | - | Device name | "Fireplace" |
+
+### Ping Response
+```
+PROFLAMEPONG
+```
+(Plain text, not JSON)
+
+### Burner Status Interpretation
+
+The `burner_status` field is a bitfield. Key observations:
+- Values around 32700+ indicate burner is on
+- Negative values (e.g., -4370) indicate burner is off
+- **Do NOT use burner_status for power state** - use `main_mode` instead
+- Lower bits may contain flame level info
+
+## Example Session
+
+### Connection & Initial Status
+```
+CLIENT: [WebSocket handshake - GET / HTTP/1.1 with Upgrade: websocket]
+SERVER: [WebSocket accept - HTTP/1.1 101 Switching Protocols]
+CLIENT: PROFLAMECONNECTION
+SERVER: PROFLAMECONNECTIONOPEN
+SERVER: {"status0":"timer_status","value0":"0","status1":"timer_set","value1":"60000","status2":"timer_count","value2":"0"}
+SERVER: {"status0":"main_mode","value0":"0"}
+SERVER: {"status0":"wifi_signal_str","value0":"53"}
+SERVER: {"status0":"room_temperature","value0":"720"}
+```
+
+### Turn On (Manual Mode)
+```
+CLIENT: {"control0":"main_mode","value0":"5"}
+SERVER: {"status0":"main_mode","value0":"5"}
+SERVER: {"status0":"burner_status","value0":"32706"}
+```
+
+### Set Flame Level
+```
+CLIENT: {"control0":"flame_control","value0":"4"}
+SERVER: {"status0":"flame_control","value0":"4"}
+```
+
+### Set Temperature (Smart Mode)
+```
+CLIENT: {"control0":"main_mode","value0":"6"}
+CLIENT: {"control0":"temperature_set","value0":"750"}
+SERVER: {"status0":"main_mode","value0":"6"}
+SERVER: {"status0":"temperature_set","value0":"750"}
+```
+
+### Keep-Alive
+```
+CLIENT: PROFLAMEPING
+SERVER: PROFLAMEPONG
+```
+
+### Turn Off
+```
+CLIENT: {"control0":"main_mode","value0":"0"}
+SERVER: {"status0":"main_mode","value0":"0"}
+SERVER: {"status0":"burner_status","value0":"-4370"}
+```
+
+## Implementation Notes
+
+1. **Connection Management**
+   - Maintain persistent WebSocket connection
+   - Reconnect on disconnect with exponential backoff
+   - Send PROFLAMEPING every 5 seconds for keep-alive
+
+2. **State Tracking**
+   - Parse all incoming status messages
+   - Use `main_mode` as authoritative power state (NOT burner_status)
+   - Cache current values for all controls
+
+3. **Key Points**
+   - JSON must be compact (no spaces after colons/commas)
+   - Device pushes state changes - no polling needed
+   - Multiple clients can connect simultaneously
+
+## Test Commands (for debugging)
+
+Using netcat or similar:
+```bash
+# Connect (need WebSocket handshake first)
+# Then send commands like:
+{"control0":"main_mode","value0":"5"}
+PROFLAMEPING
+```
+
+## Packet Captures Reference
+
+Protocol was reverse-engineered from packet captures of the official iOS app communicating with the device. Key findings:
+- App maintains two simultaneous WebSocket connections
+- Device broadcasts state changes to all connected clients
+- No authentication or encryption
+- Device at 172.16.1.81:88 in test environment
